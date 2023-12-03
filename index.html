@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>To-Do List - Final</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="todo-app">
+                <h2>To-Do List <img src="images/icon.png"></h2>
+
+                <div class="board-dropdown">
+                    <label for="boardSelect">Select Board:</label>
+                    <select id="boardSelect" onchange="changeBoard()">
+                        <option value="general" selected>General</option>
+                    </select>
+                    <button id="addBoardButton" onclick="addNewBoard()">Add New Board</button>
+                    <button id="deleteBoardButton" onclick="deleteBoard()">Delete Board</button>
+                </div>
+
+                <div class="row">
+                    <input type="text" id="input-box" placeholder="Add your text">
+                    <input type="date" id="dueDate">
+                    <button onclick="addTask()">Add</button>
+                </div>
+                <ul id="list-container"></ul>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
