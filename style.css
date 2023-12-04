@@ -132,3 +132,15 @@ ul li span{
 ul li span:hover{
     background: #edeef0;
 }
+.alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: #f44336;
+    color: #fff;
+    text-align: center;
+    z-index: 1000;
+  }

@@ -8,6 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTasks(savedTasks, 'general'); // Display tasks for the default board
 });
 
+function showAlert(message) {
+    // Create the alert element
+    var alertElement = document.createElement('div');
+    alertElement.className = 'alert';
+    alertElement.textContent = message;
+  
+    // Append the alert to the body
+    document.body.appendChild(alertElement);
+  
+    // Display the alert
+    alertElement.style.display = 'block';
+  
+    // Hide the alert after a few seconds (adjust the timeout as needed)
+    setTimeout(function() {
+      alertElement.style.display = 'none';
+      // Remove the alert element from the DOM after it's hidden
+      document.body.removeChild(alertElement);
+    }, 5000); // 5000 milliseconds (5 seconds) in this example
+  }
+  
+  // Example usage:
+  // showAlert('You must write something!');
+  
+
 function addTask() {
     const inputBox = document.getElementById('input-box');
     const dueDateInput = document.getElementById('dueDate');
@@ -15,7 +39,8 @@ function addTask() {
     const dueDate = dueDateInput.value;
 
     if (inputBox.value === '') {
-        alert('You must write something!');
+        // alert('You must write something!');
+        showAlert('You must write something!')
     } else {
         const selectedBoard = document.getElementById('boardSelect').value;
         const task = {
