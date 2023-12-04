@@ -63,21 +63,59 @@ function changeBoard() {
 
 
 function addNewBoard() {
-    const newBoardName = prompt('Enter the name for the new board:');
-    if (newBoardName) {
-        const boardSelect = document.getElementById('boardSelect');
-        const newOption = document.createElement('option');
-        newOption.value = newBoardName;
-        newOption.textContent = newBoardName;
-        boardSelect.appendChild(newOption);
-        boardSelect.value = newBoardName;
-        changeBoard(); // Update the displayed tasks for the new board
+    // Create a modal for adding a new board
+    const modal = document.createElement('div');
+    modal.className = 'modal';
 
-        const savedBoards = getSavedBoards();
-        savedBoards.push(newBoardName);
-        saveBoards(savedBoards);
-    }
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Enter the name for the new board';
+    input.addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            // If Enter is pressed, simulate a click on the confirm button
+            confirmButton.click();
+        }
+    });
+
+    const confirmButton = document.createElement('button');
+    confirmButton.textContent = 'Create Board';
+    confirmButton.addEventListener('click', function () {
+        const newBoardName = input.value.trim();
+        if (newBoardName) {
+            const boardSelect = document.getElementById('boardSelect');
+            const newOption = document.createElement('option');
+            newOption.value = newBoardName;
+            newOption.textContent = newBoardName;
+            boardSelect.appendChild(newOption);
+            boardSelect.value = newBoardName;
+            changeBoard(); // Update the displayed tasks for the new board
+
+            const savedBoards = getSavedBoards();
+            savedBoards.push(newBoardName);
+            saveBoards(savedBoards);
+            
+            // Close the modal
+            document.body.removeChild(modal);
+        }
+    });
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.addEventListener('click', function () {
+        // Close the modal without creating a new board
+        document.body.removeChild(modal);
+    });
+
+    modal.appendChild(input);
+    modal.appendChild(confirmButton);
+    modal.appendChild(cancelButton);
+
+    document.body.appendChild(modal);
+
+    // Focus on the input field when the modal appears
+    input.focus();
 }
+
 
 function deleteBoard() {
     const selectedBoard = document.getElementById('boardSelect').value;
