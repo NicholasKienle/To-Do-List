@@ -141,6 +141,7 @@ ul li span:hover{
     max-width: 300px; /* Set the maximum width of the alert */
     width: 100%;
     padding: 15px;
+    border-radius: 50%;
     background-color: #f44336;
     color: #fff;
     text-align: center;
