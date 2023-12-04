@@ -119,17 +119,43 @@ function addNewBoard() {
 
 function deleteBoard() {
     const selectedBoard = document.getElementById('boardSelect').value;
+
     if (selectedBoard !== 'default') {
-        const confirmed = confirm(`Are you sure you want to delete the board "${selectedBoard}"?`);
-        if (confirmed) {
+        // Create a modal for deleting the board
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+
+        const message = document.createElement('p');
+        message.textContent = `Are you sure you want to delete the board "${selectedBoard}"?`;
+
+        const confirmButton = document.createElement('button');
+        confirmButton.textContent = 'Yes';
+        confirmButton.addEventListener('click', function () {
             const savedBoards = getSavedBoards();
             const updatedBoards = savedBoards.filter(board => board !== selectedBoard);
             saveBoards(updatedBoards);
             renderBoards(updatedBoards);
             renderTasks([]);
-        }
+
+            // Close the modal
+            document.body.removeChild(modal);
+        });
+
+        const cancelButton = document.createElement('button');
+        cancelButton.textContent = 'Cancel';
+        cancelButton.addEventListener('click', function () {
+            // Close the modal without deleting the board
+            document.body.removeChild(modal);
+        });
+
+        modal.appendChild(message);
+        modal.appendChild(confirmButton);
+        modal.appendChild(cancelButton);
+
+        document.body.appendChild(modal);
     }
 }
+
 
 function renderBoards(boards) {
     const boardSelect = document.getElementById('boardSelect');
