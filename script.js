@@ -23,13 +23,9 @@ function showAlert(message) {
     // Hide the alert after a few seconds (adjust the timeout as needed)
     setTimeout(function() {
       alertElement.style.display = 'none';
-      // Remove the alert element from the DOM after it's hidden
       document.body.removeChild(alertElement);
-    }, 5000); // 5000 milliseconds (5 seconds) in this example
+    }, 5000); 
   }
-  
-  // Example usage:
-  // showAlert('You must write something!');
   
 
 function addTask() {
@@ -64,6 +60,7 @@ function changeBoard() {
     const savedTasks = getSavedTasks(selectedBoard);
     renderTasks(savedTasks, selectedBoard);
 }
+
 
 function addNewBoard() {
     const newBoardName = prompt('Enter the name for the new board:');
