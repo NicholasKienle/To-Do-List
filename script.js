@@ -95,7 +95,7 @@ function deleteBoard() {
 
 function renderBoards(boards) {
     const boardSelect = document.getElementById('boardSelect');
-    boardSelect.innerHTML = ''; 
+    boardSelect.textContent = ''; 
     boards.forEach((board) => {
         const option = document.createElement('option');
         option.value = board;
@@ -115,17 +115,17 @@ function saveTasks(tasks, board) {
 
 function renderTasks() {
     const tasksList = document.getElementById('list-container');
-    tasksList.innerHTML = '';
+    tasksList.textContent = '';
 
     const selectedBoard = document.getElementById('boardSelect').value;
     const savedTasks = getSavedTasks(selectedBoard);
 
     savedTasks.forEach((task, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `${task.text} ${task.dueDate}`;
+        li.textContent = `${task.text} ${task.dueDate}`;
 
         const span = document.createElement('span');
-        span.innerHTML = '\u00d7';
+        span.textContent = '\u00d7';
         span.addEventListener('click', () => deleteTask(index, selectedBoard));
 
         li.appendChild(span);
