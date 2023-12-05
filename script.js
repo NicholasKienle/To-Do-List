@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const savedBoards = JSON.parse(localStorage.getItem('boards')) || ['general'];
     renderBoards(savedBoards);
-    renderTasks(savedTasks, 'general'); // Display tasks for the default board
+    renderTasks(savedTasks, 'general');
 });
 
 function showAlert(message) {
@@ -14,13 +14,10 @@ function showAlert(message) {
     alertElement.className = 'alert';
     alertElement.textContent = message;
   
-    // Append the alert to the body
     document.body.appendChild(alertElement);
   
-    // Display the alert
     alertElement.style.display = 'block';
   
-    // Hide the alert after a few seconds (adjust the timeout as needed)
     setTimeout(function() {
       alertElement.style.display = 'none';
       document.body.removeChild(alertElement);
