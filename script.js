@@ -156,16 +156,15 @@ function deleteBoard() {
 function renderBoards(boards) {
     const boardSelect = document.getElementById('boardSelect');
     boardSelect.textContent = ''; 
-    
-    const boardsLength = boards.length;
-    
-    for (let i = 0; i < boardsLength; i++) {
-        const board = boards[i];
+
+    const options = boards.map(board => {
         const option = document.createElement('option');
         option.value = board;
         option.textContent = board;
-        boardSelect.appendChild(option);
-    }
+        return option;
+    });
+
+    boardSelect.append(...options);
 }
 
 function getSavedTasks(board) {
