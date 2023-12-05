@@ -156,12 +156,24 @@ function deleteBoard() {
 function renderBoards(boards) {
     const boardSelect = document.getElementById('boardSelect');
     boardSelect.textContent = ''; 
-    boards.forEach((board) => {
+    // boards.forEach((board) => {
+    //     const option = document.createElement('option');
+    //     option.value = board;
+    //     option.textContent = board;
+    //     boardSelect.appendChild(option);
+    // });
+
+    const boardsLength = boards.length;
+    
+    for (let i = 0; i < boardsLength; i++) {
+        const board = boards[i];
         const option = document.createElement('option');
         option.value = board;
         option.textContent = board;
         boardSelect.appendChild(option);
-    });
+    }
+    
+
 }
 
 function getSavedTasks(board) {
@@ -180,7 +192,34 @@ function renderTasks() {
     const selectedBoard = document.getElementById('boardSelect').value;
     const savedTasks = getSavedTasks(selectedBoard);
 
-    savedTasks.forEach((task, index) => {
+    // savedTasks.forEach((task, index) => {
+    //     const li = document.createElement('li');
+    //     li.textContent = `${task.text} ${task.dueDate}`;
+
+    //     const span = document.createElement('span');
+    //     span.textContent = '\u00d7';
+    //     span.addEventListener('click', () => deleteTask(index, selectedBoard));
+
+    //     li.appendChild(span);
+
+    //     li.addEventListener('click', function (e) {
+    //         if (e.target.tagName === 'LI') {
+    //             li.classList.toggle('checked');
+    //             toggleTaskCompletion(index, selectedBoard);
+    //         }
+    //     });
+
+    //     if (task.completed) {
+    //         li.classList.add('checked');
+    //     }
+
+    //     tasksList.appendChild(li);
+    // });
+
+    const savedTasksLength = savedTasks.length;
+
+    for (let index = 0; index < savedTasksLength; index++) {
+        const task = savedTasks[index];
         const li = document.createElement('li');
         li.textContent = `${task.text} ${task.dueDate}`;
 
@@ -202,7 +241,8 @@ function renderTasks() {
         }
 
         tasksList.appendChild(li);
-    });
+    }
+
 }
 function getSavedBoards() {
     return JSON.parse(localStorage.getItem('boards')) || [];
