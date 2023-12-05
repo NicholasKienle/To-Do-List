@@ -54,11 +54,11 @@ select, input[type="date"], button {
 }
 #deleteBoardButton {
     padding: 5px 16px;
-    background-color: #ff5845a2;
+    /* background-color: #ff5845a2;
     color: #fff;
-    border: none;
+    border: none; */
     border-radius: 30px;
-    cursor: pointer;
+    /* cursor: pointer; */
     font-size: 15px;
     margin-left: 10px;
   }  
@@ -72,16 +72,16 @@ select, input[type="date"], button {
     margin-bottom: 25px;
 }
 input{
-    flex: 1;
+    /* flex: 1; */
     border: none;
-    outline: none;
+    /* outline: none; */
     background: transparent;
     padding: 10px;
     font-weight: 14px;
 }
 button{
     border: none;
-    outline: none;
+    /* outline: none; */
     padding: 16px 50px;
     background: #ff5845a2;
     color: #fff;
