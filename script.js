@@ -102,7 +102,6 @@ function addNewBoard() {
     const cancelButton = document.createElement('button');
     cancelButton.textContent = 'Cancel';
     cancelButton.addEventListener('click', function () {
-        // Close the modal without creating a new board
         document.body.removeChild(modal);
     });
 
